@@ -1,6 +1,8 @@
 # react-router-relay [![Travis][build-badge]][build] [![npm][npm-badge]][npm]
 [Relay](http://facebook.github.io/relay/) integration for [React Router](https://github.com/reactjs/react-router).
 
+**This library does not support React Router v4, because React Router v4 does not provide the necessary integration points for efficient data fetching with Relay. Additionally, rendering performance will be better with React Router v2 than with React Router v3, as the link subscription logic in React Router v3 triggers unnecessary rerenders with Relay.**
+
 [![Discord][discord-badge]][discord]
 
 ## Usage
@@ -154,7 +156,7 @@ const widgetRoute = (
 
 If your queries require additional parameters from the location, such as from the location query or state, you can add those parameters with `prepareParams`. You can also use `prepareParams` to do additional conversion or initialization of your parameters.
 
-The `prepareParams` method has the same signature and behavior as `prepareParams` on a Relay query config, except that it also receives the current router state as an argument.
+The `prepareParams` method has the same signature and behavior as `prepareParams` on a Relay query config, except that it also receives the current router state as an argument. It is expected to return the same result when given the same previous params and router state.
 
 Additionally, you can use route parameters as variables on your containers:
 
